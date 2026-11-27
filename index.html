@@ -30,11 +30,11 @@ const SITES = [
   // { nome: "Exemplo", url: "https://exemplo.com.br", grupo: "Trabalho", icone: "", cor: "" },
   { nome: "Cesta Básica",                    url: "https://cestabasica.invbotafogo.com.br",  grupo: "INVB",   icone: "🧺", cor: "#0f8a6c" },
   { nome: "NVB Chat",                        url: "https://chat.invbotafogo.com.br",         grupo: "INVB",   icone: "💬", cor: "#2b59c3" },
-  { nome: "Café da Manhã — Consagração",     url: "https://consagracao.invbotafogo.com.br",  grupo: "INVB",   icone: "☕", cor: "#c2572f" },
+  { nome: "Café Consagração",                url: "https://consagracao.invbotafogo.com.br",  grupo: "INVB",   icone: "☕", cor: "#c2572f" },
   { nome: "Escala INVB",                     url: "https://escala.invbotafogo.com.br",       grupo: "INVB",   icone: "📅", cor: "#8a3fb8" },
-  { nome: "Evangelismo & Integração",        url: "https://escala2.invbotafogo.com.br",      grupo: "INVB",   icone: "🤝", cor: "#b8860b" },
-  { nome: "Disponibilidades do Evangelismo", url: "https://evangelismo.invbotafogo.com.br",  grupo: "INVB",   icone: "🗓️", cor: "#2f7fa3" },
-  { nome: "Banco de Músicas do Lyra",        url: "https://database.invbotafogo.com.br",     grupo: "INVB",   icone: "🎵", cor: "#c23a6b" },
+  { nome: "Evangelismo",                     url: "https://escala2.invbotafogo.com.br",      grupo: "INVB",   icone: "🤝", cor: "#b8860b" },
+  { nome: "Disponibilidades",                url: "https://evangelismo.invbotafogo.com.br",  grupo: "INVB",   icone: "🗓️", cor: "#2f7fa3" },
+  { nome: "Músicas Lyra",                    url: "https://database.invbotafogo.com.br",     grupo: "INVB",   icone: "🎵", cor: "#c23a6b" },
   { nome: "EBD chamada",                     url: "https://allanbfr77.github.io/ebd-chamada/", grupo: "Ensino", icone: "✅", cor: "#0f8a6c" },
   { nome: "Estudo bíblico",                  url: "https://allanbfr77.github.io/bible-study/", grupo: "Ensino", icone: "📖", cor: "#2b59c3" },
   { nome: "Aula EBI",                        url: "https://allanbfr77.github.io/aula-ebi/",    grupo: "Ensino", icone: "🧒", cor: "#c2572f" },
@@ -74,7 +74,7 @@ h1 { font-family: var(--f-display); font-size: 1.6rem; font-weight: 700; margin:
 .icon.emoji { font-size: 2rem }
 .tile:active .icon { transform: scale(.92) }
 @media (hover: hover) { .tile:hover .icon { transform: translateY(-2px) } }
-.name { font-size: .8rem; font-weight: 500; line-height: 1.25; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden }
+.name { font-size: .8rem; font-weight: 500; line-height: 1.25; overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden }
 .empty { background: var(--surface); border: 1px dashed var(--line); border-radius: 14px; padding: 32px 20px; text-align: center; color: var(--muted) }
 @media (max-width: 600px) { .search { max-width: none; flex-basis: 100% } h1 { font-size: 1.4rem } .grid { grid-template-columns: repeat(4, minmax(0,1fr)) } }
 @media (max-width: 340px) { .grid { grid-template-columns: repeat(3, minmax(0,1fr)) } }
