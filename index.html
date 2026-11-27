@@ -26,7 +26,7 @@
    - grupo: agrupa os sites em seções
    - icone: um destes nomes:
        calendario, calendario-ok, chat, cafe, cesta, pessoas,
-       musica, livro, prancheta, formatura, alvo, globo, casa, coracao,
+       musica, livro, prancheta, formatura, alvo, microfone, globo, casa, coracao,
        dinheiro, video, documento, configuracoes
    ============================================================ */
 const SITES = [
@@ -42,6 +42,7 @@ const SITES = [
   { nome: "Aula EBI",                        url: "https://allanbfr77.github.io/aula-ebi/",    grupo: "Ensino", icone: "formatura" },
   { nome: "Controle Meta Bíblica",           url: "https://script.google.com/macros/s/AKfycbzXO3QbNefANtCwiH4x-yrVjI9gLwpIjvY6L7vxeUP_h8XYo6REYJBzMEZBHV05poKh-w/exec", grupo: "Ensino", icone: "alvo" },
   { nome: "Agenda Anual 2026",               url: "https://script.google.com/macros/s/AKfycbxzwYwBibBDxLooCPEvBOQGiT6xq7g_KfPvaMoMcY_Lw037pozPfr4pbQ6Jcz1i0QniUw/exec", grupo: "INVB",   icone: "calendario" },
+  { nome: "Transcritor",                     url: "https://transcritor-ivory.vercel.app/",     grupo: "Ferramentas", icone: "microfone" },
 ];
 </script>
 <style>
@@ -129,6 +130,7 @@ const ICONS = {
   "livro": '<path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>',
   "prancheta": '<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>',
   "formatura": '<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>',
+  "microfone": '<path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/>',
   "alvo": '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
   "globo": '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
   "casa": '<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
@@ -144,7 +146,7 @@ const fixUrl = u => { u=(u||"").trim(); return /^https?:\/\//i.test(u) ? u : "ht
 const host = u => { try { const x=new URL(u); if (x.hostname==="script.google.com") return "Google Apps Script"; return (x.hostname+x.pathname).replace(/^www\./,"").replace(/\/$/,""); } catch { return u; } };
 const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
 const sites = SITES.filter(s => s && s.nome && s.url).map(s => ({...s, url: fixUrl(s.url)}));
-const ORDER = ["Ensino", "INVB"];
+const ORDER = ["Ensino", "INVB", "Ferramentas"];
 
 function render(){
   const q = norm(document.getElementById("q").value.trim());
