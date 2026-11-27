@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Meus Sites</title>
-<meta name="theme-color" content="#f3f5f9" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0f141f" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Meus Sites">
@@ -15,112 +15,162 @@
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <script>
 /* ============================================================
    SUA LISTA DE SITES
    Para adicionar um site, copie uma linha e troque os dados.
-   - nome:  o que aparece embaixo do ícone
+   - nome:  o que aparece na lista
    - url:   o endereço completo (com https://)
-   - grupo: opcional, agrupa os ícones em seções
-   - icone: opcional, iniciais ou um emoji (vazio = iniciais do nome)
-   - cor:   opcional, ex.: "#2b59c3" (vazio = cor automática)
+   - grupo: agrupa os sites em seções
+   - icone: um destes nomes:
+       calendario, calendario-ok, chat, cafe, cesta, pessoas,
+       musica, livro, prancheta, formatura, globo, casa, coracao,
+       dinheiro, video, documento, configuracoes
    ============================================================ */
 const SITES = [
-  // { nome: "Exemplo", url: "https://exemplo.com.br", grupo: "Trabalho", icone: "", cor: "" },
-  { nome: "Cesta Básica",                    url: "https://cestabasica.invbotafogo.com.br",  grupo: "INVB",   icone: "🧺", cor: "#0f8a6c" },
-  { nome: "NVB Chat",                        url: "https://chat.invbotafogo.com.br",         grupo: "INVB",   icone: "💬", cor: "#2b59c3" },
-  { nome: "Café Consagração",                url: "https://consagracao.invbotafogo.com.br",  grupo: "INVB",   icone: "☕", cor: "#c2572f" },
-  { nome: "Escala INVB",                     url: "https://escala.invbotafogo.com.br",       grupo: "INVB",   icone: "📅", cor: "#8a3fb8" },
-  { nome: "Evangelismo",                     url: "https://escala2.invbotafogo.com.br",      grupo: "INVB",   icone: "🤝", cor: "#b8860b" },
-  { nome: "Agenda Evangelismo",              url: "https://evangelismo.invbotafogo.com.br",  grupo: "INVB",   icone: "🗓️", cor: "#2f7fa3" },
-  { nome: "Músicas Lyra",                    url: "https://database.invbotafogo.com.br",     grupo: "INVB",   icone: "🎵", cor: "#c23a6b" },
-  { nome: "EBD chamada",                     url: "https://allanbfr77.github.io/ebd-chamada/", grupo: "Ensino", icone: "✅", cor: "#0f8a6c" },
-  { nome: "Estudo bíblico",                  url: "https://allanbfr77.github.io/bible-study/", grupo: "Ensino", icone: "📖", cor: "#2b59c3" },
-  { nome: "Aula EBI",                        url: "https://allanbfr77.github.io/aula-ebi/",    grupo: "Ensino", icone: "🧒", cor: "#c2572f" },
+  { nome: "Cesta Básica",                    url: "https://cestabasica.invbotafogo.com.br",    grupo: "INVB",   icone: "cesta" },
+  { nome: "NVB Chat",                        url: "https://chat.invbotafogo.com.br",           grupo: "INVB",   icone: "chat" },
+  { nome: "Café da Manhã — Consagração",     url: "https://consagracao.invbotafogo.com.br",    grupo: "INVB",   icone: "cafe" },
+  { nome: "Escala INVB",                     url: "https://escala.invbotafogo.com.br",         grupo: "INVB",   icone: "calendario" },
+  { nome: "Evangelismo & Integração",        url: "https://escala2.invbotafogo.com.br",        grupo: "INVB",   icone: "pessoas" },
+  { nome: "Disponibilidades do Evangelismo", url: "https://evangelismo.invbotafogo.com.br",    grupo: "INVB",   icone: "calendario-ok" },
+  { nome: "Banco de Músicas do Lyra",        url: "https://database.invbotafogo.com.br",       grupo: "INVB",   icone: "musica" },
+  { nome: "EBD chamada",                     url: "https://allanbfr77.github.io/ebd-chamada/", grupo: "Ensino", icone: "prancheta" },
+  { nome: "Estudo bíblico",                  url: "https://allanbfr77.github.io/bible-study/", grupo: "Ensino", icone: "livro" },
+  { nome: "Aula EBI",                        url: "https://allanbfr77.github.io/aula-ebi/",    grupo: "Ensino", icone: "formatura" },
 ];
 </script>
 <style>
+/* Swiss minimal: neutral surfaces, one blue accent, Inter only, grouped list rows */
 :root {
-  --bg: #f3f5f9; --surface: #ffffff; --fg: #172033; --muted: #5b667d; --line: #dde2ec; --accent: #2b59c3;
-  --shadow: 0 1px 2px rgba(23,32,51,.08), 0 4px 12px rgba(23,32,51,.08);
-  --f-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
-  --f-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --fg: #0f172a;
+  --muted: #64748b;
+  --line: #e7eaf0;
+  --hover: #f3f5f9;
+  --accent: #2563eb;
+  --accent-soft: #eef3fe;
+  --ring: #2563eb;
+  --font: "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --radius: 14px;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) { :root {
-  --bg: #0f141f; --surface: #182031; --fg: #e6eaf3; --muted: #97a2ba; --line: #2a3448; --accent: #7d9cf0;
-  --shadow: 0 1px 2px rgba(0,0,0,.35), 0 4px 12px rgba(0,0,0,.3); color-scheme: dark } }
+  --bg: #0b0d12; --surface: #14171e; --fg: #e8ebf2; --muted: #8a93a6; --line: #232834; --hover: #1a1e27;
+  --accent: #7aa2ff; --accent-soft: #1b2440; --ring: #7aa2ff; color-scheme: dark } }
+
 * { box-sizing: border-box }
 html { -webkit-text-size-adjust: 100% }
-body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 15px; line-height: 1.5;
-  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px) }
-.wrap { max-width: 1000px; margin: 0 auto; padding-block: 22px 48px;
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 16px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px) }
+.wrap { max-width: 640px; margin: 0 auto; padding-block: 28px 56px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-  display: flex; flex-direction: column; gap: 22px }
-header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px }
-h1 { font-family: var(--f-display); font-size: 1.6rem; font-weight: 700; margin: 0; letter-spacing: -.01em; flex: 1 1 auto }
-.search { flex: 1 1 260px; max-width: 360px; min-width: 0; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line);
-  background: var(--surface); color: var(--fg); font: inherit; font-size: 16px }
-.search:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px }
-.group { display: flex; flex-direction: column; gap: 12px }
-.group h2 { font-family: var(--f-display); font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 0; font-weight: 600 }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 20px 10px }
-.tile { display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 4px 2px; text-decoration: none; color: var(--fg);
-  text-align: center; min-width: 0; -webkit-tap-highlight-color: transparent; border-radius: 12px }
-.tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
-.icon { width: 62px; height: 62px; border-radius: 17px; display: grid; place-items: center; font-family: var(--f-display);
-  font-weight: 700; font-size: 1.4rem; color: #fff; box-shadow: var(--shadow); transition: transform .1s }
-.icon.emoji { font-size: 2rem }
-.tile:active .icon { transform: scale(.92) }
-@media (hover: hover) { .tile:hover .icon { transform: translateY(-2px) } }
-.name { font-size: .8rem; font-weight: 500; line-height: 1.25; overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden }
-.empty { background: var(--surface); border: 1px dashed var(--line); border-radius: 14px; padding: 32px 20px; text-align: center; color: var(--muted) }
-@media (max-width: 600px) { .search { max-width: none; flex-basis: 100% } h1 { font-size: 1.4rem } .grid { grid-template-columns: repeat(4, minmax(0,1fr)) } }
-@media (max-width: 340px) { .grid { grid-template-columns: repeat(3, minmax(0,1fr)) } }
-@media (prefers-reduced-motion: reduce) { .icon { transition: none } }
+  display: flex; flex-direction: column; gap: 28px }
+
+header { display: flex; flex-direction: column; gap: 16px }
+.title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px }
+h1 { margin: 0; font-size: 1.75rem; font-weight: 700; letter-spacing: -.025em; line-height: 1.2 }
+.count { font-size: .875rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap }
+
+.search { position: relative }
+.search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--muted); pointer-events: none }
+.search input { width: 100%; height: 48px; padding: 0 14px 0 42px; border-radius: 12px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--fg); font: inherit; font-size: 16px; transition: border-color .2s, box-shadow .2s }
+.search input::placeholder { color: var(--muted) }
+.search input:focus { outline: none; border-color: var(--ring); box-shadow: 0 0 0 3px var(--accent-soft) }
+
+section { display: flex; flex-direction: column; gap: 8px }
+section h2 { margin: 0; padding-left: 4px; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted) }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden }
+.row { display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 10px 14px; text-decoration: none; color: inherit;
+  cursor: pointer; transition: background-color .2s; -webkit-tap-highlight-color: transparent }
+.row + .row { border-top: 1px solid var(--line) }
+.row:hover { background: var(--hover) }
+.row:active { background: var(--hover) }
+.row:focus-visible { outline: 2px solid var(--ring); outline-offset: -2px; border-radius: var(--radius) }
+.ico { flex: none; width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center }
+.ico svg { width: 20px; height: 20px }
+.txt { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column }
+.name { font-size: .975rem; font-weight: 500; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.host { font-size: .8125rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.chev { flex: none; width: 18px; height: 18px; color: var(--muted); opacity: .7; transition: transform .2s }
+.row:hover .chev { transform: translateX(2px) }
+
+.empty { padding: 32px 20px; text-align: center; color: var(--muted); font-size: .9375rem }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important } }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>Meus Sites</h1>
-    <input id="q" class="search" type="search" placeholder="Buscar site" aria-label="Buscar site" autocomplete="off">
+    <div class="title"><h1>Meus Sites</h1><span class="count" id="count"></span></div>
+    <label class="search" for="q">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" type="search" placeholder="Buscar site" aria-label="Buscar site" autocomplete="off">
+    </label>
   </header>
   <main id="list"></main>
 </div>
 <script>
-const COLORS = ["#2b59c3","#0f8a6c","#c2572f","#8a3fb8","#b8860b","#c23a6b","#2f7fa3","#4b5563"];
-function hashColor(s){ let h=0; for (const c of s) h=(h*31+c.charCodeAt(0))>>>0; return COLORS[h%COLORS.length]; }
-function initials(n){ const w=n.trim().split(/\s+/).filter(Boolean); return ((w[0]||"?")[0]+(w[1]?w[1][0]:"")).toUpperCase(); }
-function fixUrl(u){ u=(u||"").trim(); return /^https?:\/\//i.test(u) ? u : "https://"+u; }
+/* Lucide icons (ISC license) */
+const ICONS = {
+  "calendario": '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/>',
+  "calendario-ok": '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/>',
+  "chat": '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
+  "cafe": '<path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/>',
+  "cesta": '<path d="m15 11-1 9"/><path d="m19 11-4-7"/><path d="M2 11h20"/><path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4"/><path d="M4.5 15.5h15"/><path d="m5 11 4-7"/><path d="m9 11 1 9"/>',
+  "pessoas": '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  "musica": '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+  "livro": '<path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>',
+  "prancheta": '<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>',
+  "formatura": '<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>',
+  "globo": '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+  "casa": '<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+  "coracao": '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+  "dinheiro": '<rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>',
+  "video": '<path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/>',
+  "documento": '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+  "configuracoes": '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>'
+};
+const CHEV = '<path d="m9 18 6-6-6-6"/>';
+const svg = (paths, cls) => `<svg class="${cls||""}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+const fixUrl = u => { u=(u||"").trim(); return /^https?:\/\//i.test(u) ? u : "https://"+u; };
+const host = u => { try { const x=new URL(u); return (x.hostname+x.pathname).replace(/^www\./,"").replace(/\/$/,""); } catch { return u; } };
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
 const sites = SITES.filter(s => s && s.nome && s.url).map(s => ({...s, url: fixUrl(s.url)}));
+const ORDER = ["Ensino", "INVB"];
+
 function render(){
-  const q = document.getElementById("q").value.trim().toLowerCase();
+  const q = norm(document.getElementById("q").value.trim());
   const list = document.getElementById("list"); list.replaceChildren();
-  if (!sites.length){ const e=document.createElement("div"); e.className="empty"; e.textContent="Nenhum site cadastrado ainda. Adicione na lista SITES do arquivo index.html."; list.append(e); return; }
-  const shown = sites.filter(s => !q || (s.nome+" "+s.url+" "+(s.grupo||"")).toLowerCase().includes(q));
-  if (!shown.length){ const e=document.createElement("div"); e.className="empty"; e.textContent="Nenhum site encontrado."; list.append(e); return; }
+  document.getElementById("count").textContent = `${sites.length} sites`;
+  const shown = sites.filter(s => !q || norm(s.nome+" "+s.url+" "+(s.grupo||"")).includes(q));
+  if (!shown.length){ const e=document.createElement("div"); e.className="card empty"; e.textContent = sites.length ? "Nenhum site encontrado." : "Nenhum site cadastrado."; list.append(e); return; }
   const groups = new Map();
-  for (const s of shown){ const g=(s.grupo||"").trim(); if(!groups.has(g)) groups.set(g,[]); groups.get(g).push(s); }
-  const names=[...groups.keys()].sort((a,b)=> !a?1:!b?-1:a.localeCompare(b,"pt-BR"));
-  const wrap=document.createElement("div"); wrap.style.cssText="display:flex;flex-direction:column;gap:26px";
+  for (const s of shown){ const g=(s.grupo||"Outros").trim(); if(!groups.has(g)) groups.set(g,[]); groups.get(g).push(s); }
+  const rank = g => { const i=ORDER.indexOf(g); return i<0 ? 99 : i; };
+  const names = [...groups.keys()].sort((a,b)=> rank(a)-rank(b) || a.localeCompare(b,"pt-BR"));
+  const frag = document.createElement("div"); frag.style.cssText="display:flex;flex-direction:column;gap:24px";
   for (const g of names){
-    const sec=document.createElement("section"); sec.className="group";
-    if (names.length>1 || g){ const h=document.createElement("h2"); h.textContent=g||"Outros"; sec.append(h); }
-    const grid=document.createElement("div"); grid.className="grid";
+    const sec=document.createElement("section");
+    const h=document.createElement("h2"); h.textContent=g; sec.append(h);
+    const card=document.createElement("div"); card.className="card";
     for (const s of groups.get(g).sort((a,b)=>a.nome.localeCompare(b.nome,"pt-BR"))){
-      const a=document.createElement("a"); a.className="tile"; a.href=s.url; a.rel="noopener"; a.title=s.url;
-      const i=document.createElement("div"); i.className="icon";
-      const t=(s.icone||"").trim()||initials(s.nome);
-      if (/\p{Extended_Pictographic}/u.test(t)) i.classList.add("emoji");
-      i.textContent=t; i.style.background=s.cor||hashColor(s.nome);
-      const n=document.createElement("div"); n.className="name"; n.textContent=s.nome;
-      a.append(i,n); grid.append(a);
+      const a=document.createElement("a"); a.className="row"; a.href=s.url; a.rel="noopener";
+      const ico=document.createElement("span"); ico.className="ico"; ico.innerHTML=svg(ICONS[s.icone]||ICONS.globo);
+      const txt=document.createElement("span"); txt.className="txt";
+      const n=document.createElement("span"); n.className="name"; n.textContent=s.nome;
+      const hh=document.createElement("span"); hh.className="host"; hh.textContent=host(s.url);
+      txt.append(n,hh);
+      const chev=document.createElement("span"); chev.style.display="contents"; chev.innerHTML=svg(CHEV,"chev");
+      a.append(ico,txt,chev); card.append(a);
     }
-    sec.append(grid); wrap.append(sec);
+    sec.append(card); frag.append(sec);
   }
-  list.append(wrap);
+  list.append(frag);
 }
 document.getElementById("q").addEventListener("input", render);
 render();
